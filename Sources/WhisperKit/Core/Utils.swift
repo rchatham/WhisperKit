@@ -644,9 +644,9 @@ public func compressionRatio(of array: [Int]) -> Float {
     }
 }
 
-public func compressionRatio(of text: String) -> Float {
+public func compressionRatio(of text: String) throws -> Float {
     if text.isEmpty {
-        return Float.infinity // TODO: throw to caller instead of return infinity
+        throw WhisperError.compressionRatioFailed("Compression ratio calculation failed: text is empty")
     }
 
     // Encode the string as UTF-8

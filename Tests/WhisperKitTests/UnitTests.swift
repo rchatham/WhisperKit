@@ -120,13 +120,13 @@ final class UnitTests: XCTestCase {
         XCTAssertLessThan(repeatedRatio, repeatedLongRatio)
     }
 
-    func testCompressionRatioString() {
+    func testCompressionRatioString() throws {
         let uniqueString = "This is a unique string"
-        let uniqueRatio = compressionRatio(of: uniqueString)
+        let uniqueRatio = try compressionRatio(of: uniqueString)
         let repeatedString = String(repeating: "Repeated text string", count: 5)
-        let repeatedRatio = compressionRatio(of: repeatedString)
+        let repeatedRatio = try compressionRatio(of: repeatedString)
         let repeatedLongString = String(repeating: "Longer repeated text string", count: 10)
-        let repeatedLongRatio = compressionRatio(of: repeatedLongString)
+        let repeatedLongRatio = try compressionRatio(of: repeatedLongString)
 
         XCTAssertLessThan(uniqueRatio, repeatedRatio)
         XCTAssertLessThan(repeatedRatio, repeatedLongRatio)

@@ -431,6 +431,7 @@ public enum WhisperError: Error, LocalizedError, Equatable {
     case transcriptionFailed(String = "Transcription failed")
     case decodingFailed(String = "Decoding failed")
     case microphoneUnavailable(String = "No available microphone to record or stream")
+    case compressionRatioFailed(String = "Compression ratio calculation failed")
 
     public var errorDescription: String? {
         switch self {
@@ -465,6 +466,9 @@ public enum WhisperError: Error, LocalizedError, Equatable {
                 Logging.error(message)
                 return message
             case let .microphoneUnavailable(message):
+                Logging.error(message)
+                return message
+            case let .compressionRatioFailed(message):
                 Logging.error(message)
                 return message
         }
